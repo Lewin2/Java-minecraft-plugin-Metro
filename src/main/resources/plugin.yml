@@ -1,0 +1,8 @@
+name: DellunaMetro
+version: ${project.version}
+main: me.lewin.dellunametro.Main
+api-version: 1.17
+commands:
+  metro:
+    description: Delluna metro system.
+    usage: /<command>
