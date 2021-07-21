@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 public class ClickBusStationNPC implements Listener {
     @EventHandler
     private void onInteractNPCEvent (NPCRightClickEvent event) {
-        Player player = event.getClicker();
         switch (event.getNPC().getName()){
             case "장미역 버스정류장":
             case "동백역 버스정류장":
@@ -19,6 +18,7 @@ public class ClickBusStationNPC implements Listener {
             case "개나리역 버스정류장":
             case "진달래역 버스정류장":
             case "해바라기역 버스정류장":
+                Player player = event.getClicker();
                 player.openInventory(new BusStationGUI(player, event.getNPC().getName().substring(0, event.getNPC().getName().length()-6)).getInventory(1));
                 break;
         }

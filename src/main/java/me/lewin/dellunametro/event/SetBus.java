@@ -6,7 +6,6 @@ import me.lewin.dellunametro.file.PlayerFile;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
 import java.util.List;
 
 public class SetBus {
