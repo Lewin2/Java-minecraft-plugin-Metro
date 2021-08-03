@@ -2,6 +2,7 @@ package me.lewin.dellunametro.guiClickEvent;
 
 import me.lewin.dellunametro.event.BusStationNPC;
 import me.lewin.dellunametro.gui.SettingBusGUI;
+import me.lewin.dellunametro.gui.SettingBusStationGUI;
 import me.lewin.dellunametro.gui.SettingMenuGUI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,6 +28,7 @@ public class SettingBusEvent implements Listener {
                 case YELLOW_WOOL:
                     switch (event.getClick()){
                         case LEFT:
+                            player.openInventory(new SettingBusStationGUI(player, nameset(event.getSlot()).substring(0, nameset(event.getSlot()).length()-6)).getInventory(1));
                             break;
                         case SHIFT_LEFT:
                             BusStationNPC.createNPC(nameset(event.getSlot()), player);

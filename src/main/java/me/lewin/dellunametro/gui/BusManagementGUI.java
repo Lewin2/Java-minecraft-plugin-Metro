@@ -1,7 +1,9 @@
 package me.lewin.dellunametro.gui;
 
+import me.lewin.dellunametro.file.BusFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -34,11 +36,15 @@ public class BusManagementGUI {
     }
 
     private ItemStack pay(){
-        return IconDefaultGUI.iconDefault(Material.EMERALD, "버스 연장하기");
+        FileConfiguration config = BusFile.getBusConfig(name);
+        if (config.getBoolean("paid"))
+            return IconDefaultGUI.iconDefault(Material.LIME_WOOL, "버스 연장하기");
+        else
+            return IconDefaultGUI.iconDefault(Material.RED_WOOL, "버스 연장하기");
     }
 
     private ItemStack remove(){
-        return IconDefaultGUI.iconDefault(Material.RED_WOOL, "버스 정류장 삭제");
+        return IconDefaultGUI.iconDefault(Material.BARRIER, "버스 정류장 삭제");
     }
 
     private ItemStack iconnull(){

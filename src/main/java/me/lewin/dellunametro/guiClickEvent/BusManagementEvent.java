@@ -2,6 +2,7 @@ package me.lewin.dellunametro.guiClickEvent;
 
 import me.lewin.dellunametro.event.SetBus;
 import me.lewin.dellunametro.file.BusFile;
+import me.lewin.dellunametro.gui.IconDefaultGUI;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -19,16 +20,23 @@ public class BusManagementEvent implements Listener {
             if (event.getCurrentItem() == null) return;
             String name = event.getClickedInventory().getItem(0).getItemMeta().getDisplayName();
             switch ((event.getCurrentItem()).getType()) {
-                case RED_WOOL:
+                case BARRIER:
                     SetBus.removeBus(name, player);
                     player.closeInventory();
                     break;
-                case EMERALD:
+                case RED_WOOL:
                     FileConfiguration config = BusFile.getBusConfig(name);
+                    if (!(hasmoney(player))){
+                        player.sendMessage("돈이 부족합니다.");
+                        break;
+                    }
                     config.set("paid", Boolean.valueOf(true));
                     BusFile.saveDataFile(config, BusFile.getBusFile(name));
+                    event.getInventory().setItem(2, IconDefaultGUI.iconDefault(Material.LIME_WOOL, "버스 연장하기"));
+                    player.sendMessage("연장되었습니다.");
                     break;
-
+                case LIME_WOOL:
+                    player.sendMessage("이미 연장하셨습니다.");
             }
         }
     }
@@ -38,9 +46,9 @@ public class BusManagementEvent implements Listener {
             if (item == null) {
                 continue;
             }
-            if (item.getType() == Material.PAPER) {
+            if (item.getType() == Material.BLUE_DYE) {
                 if (item.getItemMeta().hasCustomModelData()) {
-                    if (item.getItemMeta().getCustomModelData() == 1003) {
+                    if (item.getItemMeta().getCustomModelData() == 1000) {
                         item.setAmount(item.getAmount() - 1);
                         return true;
                     }
@@ -48,10 +56,5 @@ public class BusManagementEvent implements Listener {
             }
         }
         return false;
-    }
-
-    private boolean hasbusstation (String name){
-        FileConfiguration config = BusFile.getBusConfig(name);
-        return config.getBoolean("station");
     }
 }

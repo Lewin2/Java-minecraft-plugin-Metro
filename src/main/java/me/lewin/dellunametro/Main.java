@@ -28,8 +28,9 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ClickBusNPC(), this);
         Bukkit.getPluginManager().registerEvents(new BusManagementEvent(), this);
         Bukkit.getPluginManager().registerEvents(new SettingBusEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new ClickBusStationNPC(), this);
+        Bukkit.getPluginManager().registerEvents(new ClickBusStationNPC(), +this);
         Bukkit.getPluginManager().registerEvents(new BusStationEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new SettingBusStationEvent(), this);
 
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdir();

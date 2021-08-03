@@ -15,16 +15,25 @@ public class TeleportEvent{
         Plugin plugin = JavaPlugin.getPlugin(Main.class);
         teleportToMetro("train", player);
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            player.sendMessage("arriving at 3..");
+            player.sendMessage("arriving at 10..");
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                player.sendMessage("arriving at 2..");
+                player.sendMessage("arriving at 5..");
                 Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                    player.sendMessage("arriving at 1..");
+                    player.sendMessage("arriving at 4..");
                     Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                        teleportToMetro(name, player);
+                        player.sendMessage("arriving at 3..");
+                        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                            player.sendMessage("arriving at 2..");
+                            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                                player.sendMessage("arriving at 1..");
+                                Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                                    teleportToMetro(name, player);
+                                }, 20L);
+                            }, 20L);
+                        }, 20L);
                     }, 20L);
                 }, 20L);
-            }, 20L);
+            }, 100L);
         }, 20L);
     }
 

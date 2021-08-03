@@ -1,5 +1,6 @@
 package me.lewin.dellunametro.guiClickEvent;
 
+import me.lewin.dellunametro.event.ResetPay;
 import me.lewin.dellunametro.gui.SettingBusGUI;
 import me.lewin.dellunametro.gui.SettingMetroGUI;
 import org.bukkit.entity.Player;
@@ -20,6 +21,10 @@ public class SettingMenuEvent implements Listener {
                     return;
                 case EMERALD:
                     player.openInventory(new SettingBusGUI(player).getInventory());
+                    return;
+                case REDSTONE:
+                    ResetPay.reset();
+                    player.sendMessage("리셋되었습니다.");
                     return;
             }
         }

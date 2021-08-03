@@ -20,7 +20,6 @@ public class SettingBusGUI {
 
     public Inventory getInventory(){
         Inventory inv = Bukkit.getServer().createInventory(null, 54, "§x§0§0§b§3§b§6         ˚₊· Delluna Metro ˚₊·§3");
-        inv.setItem(13, reset());
 
         inv.setItem(19, sub("장미역"));
         inv.setItem(28, sub("동백역"));
@@ -40,9 +39,6 @@ public class SettingBusGUI {
         return inv;
     }
 
-    private ItemStack reset(){
-        return IconDefaultGUI.iconDefault(Material.COPPER_BLOCK, "§a유지비 지불 관리");
-    }
     private ItemStack sub(String name){
         FileConfiguration config = MetroFile.getMetroConfig(name);
 

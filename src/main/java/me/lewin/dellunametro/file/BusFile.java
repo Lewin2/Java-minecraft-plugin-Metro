@@ -50,6 +50,10 @@ public class BusFile {
         return name.substring(0,name.length() - 4);
     }
 
+    public static File[] getBusFiles() {
+        return new File(PLUGIN.getDataFolder() + "\\Bus").listFiles();
+    }
+
     public static File getBusFile(String name) {
         return new File(PLUGIN.getDataFolder() + "\\Bus", name + ".dat");
     }
